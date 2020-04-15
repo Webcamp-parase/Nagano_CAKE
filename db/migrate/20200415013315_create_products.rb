@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :category_id
       t.integer :non_tax_price
       t.text :image_id
-      t.boolean :status
+      t.boolean :status, null:false
 
       t.timestamps
     end
