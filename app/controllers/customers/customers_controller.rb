@@ -10,13 +10,19 @@ class Customers::CustomersController < ApplicationController
   def update
   	@customer = Customer.find(current_customer.id)
   	if @customer.update(customer_params)
-  		redirect_to customer_path(@customer)
+  		redirect_to customers_path
   	else
   		render "edit"
   	end
   end
 
   def retire
+
+  end
+
+  def retire_update
+    customer = Customer.find(current_customer.id)
+    customer.update(status: false)
   end
 
   private
