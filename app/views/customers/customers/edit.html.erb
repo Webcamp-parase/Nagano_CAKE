@@ -1,0 +1,73 @@
+<h1>登録情報編集</h1>
+<%= form_with model: @customer, url: customers_update_path, local: true do |f| %>
+
+<% if @customer.errors.any? %>
+	<% @customer.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	<% end %>
+<% end %>
+
+<table class="table">
+  
+  <tr>
+    <td>名前</td>
+    <td>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+    </td>
+    <td>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>フリガナ</td>
+    <td>
+      <%= f.text_field :read_last_name, autofocus: true, autocomplete: "read_last_name", class: "form-control" %>
+    </td>
+    <td>
+      <%= f.text_field :read_first_name, autofocus: true, autocomplete: "read_first_name", class: "form-control" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>メールアドレス</td>
+    <td>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>郵便番号（ハイフンなし）</td>
+    <td>
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control" %>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>住所</td>
+    <td colspan="2">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>電話番号（ハイフンなし）</td>
+    <td>
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><%= f.submit "編集内容を保存する", class: "btn btn-primary" %></td>
+    <td><%= link_to "退会する", customers_retire_path, class: "btn btn-danger" %></td>
+  </tr>
+
+</table>
+<% end %>
+
+
+
