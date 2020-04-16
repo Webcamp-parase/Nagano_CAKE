@@ -1,0 +1,24 @@
+<h2>商品一覧画面</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @products.each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= product.name %></td>
+				<td><%= product.non_tax_price %></td>
+				<td><%= product.category.name %></td>
+				<td><%= product.status %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

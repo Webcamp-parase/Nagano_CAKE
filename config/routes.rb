@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   	patch "customers/retire" => "customers#retire_update"
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :admins do
+    resources :categories, only: [:index, :create, :edit, :update]
+    resources :products, only: [:index, :show, :new, :create, :edit, :update]
+  end
 end
