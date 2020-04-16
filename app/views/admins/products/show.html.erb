@@ -1,2 +1,9 @@
-<h1>Admins::Products#show</h1>
-<p>Find me in app/views/admins/products/show.html.erb</p>
+<h2>商品 詳細画面</h2>
+
+<%= attachment_image_tag @product, :image, :fill, 150, 150, fallback: 'no_image.jpg', size: '150x150' %></br>
+商品名　<%= @product.name %></br>
+商品説明 <%= @product.description %></br>
+ジャンル <%= @product.category.name %></br>
+税込価格(税抜価格)　<%= addTax(@product.non_tax_price) %>(<%= @product.non_tax_price.to_s(:delimited) %>) 円</br>
+販売ステータス　<%= @product.status %></br>
+<%= link_to "編集する", edit_admins_product_path(params[:id]) %>

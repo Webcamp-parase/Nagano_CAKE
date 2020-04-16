@@ -1,2 +1,8 @@
-<h1>Admins::Categories#edit</h1>
-<p>Find me in app/views/admins/categories/edit.html.erb</p>
+<h2>ジャンル編集画面</h2>
+
+<%= form_with model: [:admins, @category] do |f| %>
+	ジャンル　<%= f.text_field :name %>
+	<%= f.radio_button :status, :"有効" %>有効
+	<%= f.radio_button :status, :"無効" %>無効
+	<%= f.submit "変更を保存する"%>
+<% end %>

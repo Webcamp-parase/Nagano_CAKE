@@ -21,7 +21,7 @@
 			<tr>
 				<td><%= category.name %></td>
 				<td><%= category.status %></td>
-				<td>編集する</td> <!--リンク -->
+				<td><%= link_to "編集する", edit_admins_category_path(category.id) %></td>
 			</tr>
 		<% end %>
 	</tbody>
