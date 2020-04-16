@@ -1,0 +1,23 @@
+<div class='row', style="padding: 100px 15px;">
+  <div class='col-xs-3'>
+    <% @categories.each do |category| %>
+    	<tr>
+    		<td>
+    		  <%= link_to products_path(category_id:category.id) do %>
+    			<%= category.name %><br>
+    		  <% end %>
+        </td>
+    	</tr>
+    <% end %>
+  </div>
+  <div class='col-xs-9'>
+    <%= attachment_image_tag @product, :image, :fill, 80, 80, fallback: 'image.jpg', size: '250x150' %></br>
+    <%= @product.name %></br>
+    <%= @product.description %></br>
+    <%= addTax(@product.non_tax_price) %>税込
+    <%= form_with model: @cart_item do |f| %>
+    個数選択<%= f.select :quantuty, [[1],[2],[3]] %>
+    <%= f.submit "カートに入れる" %>
+    <% end %>
+  </div>
+</div>

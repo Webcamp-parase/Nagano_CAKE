@@ -1,0 +1,12 @@
+<h2>商品 新規登録画面</h2>
+
+<%= form_with model: [:admins, @product] do |f| %>
+	<%= attachment_image_tag @product, :image, :fill, 80, 80, fallback: 'image.jpg', size: '150x150' %></br>
+	<%= f.attachment_field :image %></br> <!-- CSSでファイル選択ボタンの文字変更 -->
+	商品名　<%= f.text_field :name %></br>
+	商品説明　<%= f.text_area :description %></br>
+	ジャンル　<%= f.collection_select :category_id, Category.where(status: "有効"), :id, :name, include_blank: "--選択してください--" %></br>
+	税抜価格　<%= f.text_field :non_tax_price %> 円</br>
+	販売ステータス　<%= f.select :status, [["販売中","販売中"],["売切れ","売切れ"]], include_blank: "--選択してください--" %></br>
+	<%= f.submit "新規登録" %>
+<% end %>
