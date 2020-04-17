@@ -1,0 +1,33 @@
+.row {
+	position: relative;
+	margin-top: 40px;
+}
+
+.new-btn {
+	color: gray;
+	border-radius: 50%;
+	text-align: center;
+	box-shadow: 2px 2px 2px gray;
+	font-size: 20px;
+	padding: 5px;
+	position: absolute;
+	top: 20px;
+	right: 70px;
+}
+
+.table {
+	width: 90%;
+	margin: 10px auto;
+}
+
+.page {
+	text-align: center;
+}
+
+.im {
+	display: none;
+}
+
+p {
+	margin: 10px;
+}

@@ -1,29 +1,42 @@
-<h2>商品一覧画面</h2>
+<%= stylesheet_link_tag "admins/products", :media => "all" %>
 
-<%= link_to "新規投稿(実際は+ボタン)", new_admins_product_path %></br>
+<div class="row">
+	<div class="col-xs-10">
+		<h3><strong>商品一覧画面</strong></h3>
+	</div>
+	<div class="col-xs-2">
+		<%= link_to "＋", new_admins_product_path, class: 'btn btn-outline-light new-btn' %>
+	</div>
 
-<table>
-	<thead>
-		<tr>
-			<th>商品ID</th>
-			<th>商品名</th>
-			<th>税抜価格</th>
-			<th>ジャンル</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @products.each do |product| %>
-			<tr>
-				<td><%= product.id %></td>
-				<td><%= link_to admins_product_path(product.id) do %>
-						<%= product.name %>
-					<% end %>
-				</td>
-				<td><%= product.non_tax_price.to_s(:delimited) %></td>
-				<td><%= product.category.name %></td>
-				<td><%= product.status %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+	<div class="col-xs-12">
+		<table class="table">
+			<thead>
+				<tr class="active">
+					<th>商品ID</th>
+					<th>商品名</th>
+					<th>税抜価格</th>
+					<th>ジャンル</th>
+					<th>ステータス</th>
+				</tr>
+			</thead>
+		<tbody>
+			<% @products.each do |product| %>
+				<tr>
+					<td><%= product.id %></td>
+					<td><%= link_to admins_product_path(product.id) do %>
+							<%= product.name %>
+						<% end %>
+					</td>
+					<td><%= product.non_tax_price.to_s(:delimited) %></td>
+					<td><%= product.category.name %></td>
+					<td><%= product.status %></td>
+				</tr>
+			<% end %>
+		</tbody>
+		</table>
+	</div>
+
+	<div class="page"><%= paginate @products %></div>
+
+</div>
+

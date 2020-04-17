@@ -12,7 +12,7 @@
 			<p>ジャンル　<%= f.text_field :name %></p>
 			<p><%= f.radio_button :status, :"有効" %> 有効</p>
 			<p><%= f.radio_button :status, :"無効" %> 無効</p>
-			<p><%= f.submit('追加',class: 'btn btn-info btn-outline-dark btn-sm active')%></p>
+			<p><%= f.submit('追加',class: 'btn btn-info btn-outline-dark btn-sm')%></p>
 		<% end %>
 	</div>
 </div>
@@ -32,7 +32,7 @@
 					<tr>
 						<td><%= category.name %></td>
 						<td><%= category.status %></td>
-						<td><%= link_to "編集する", edit_admins_category_path(category.id), class: 'btn btn-primary btn-sm active' %></td>
+						<td><%= link_to "編集する", edit_admins_category_path(category.id), class: 'btn btn-primary btn-sm' %></td>
 					</tr>
 				<% end %>
 			</tbody>
