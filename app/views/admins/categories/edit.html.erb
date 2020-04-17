@@ -1,20 +1,19 @@
 <%= stylesheet_link_tag "admins/categories", :media => "all" %>
 
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<h3><strong>ジャンル編集画面</strong></h3>
-		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-xs-12">
-			<%= form_with model: [:admins, @category] do |f| %>
-				<p>ジャンル　<%= f.text_field :name %></p>
-				<p><%= f.radio_button :status, :"有効" %> 有効</p>
-				<p><%= f.radio_button :status, :"無効" %> 無効</p>
-				<p><%= f.submit('変更を保存する',class: 'btn btn-info btn-outline-dark btn-sm active')%></p>
-			<% end %>
-		</div>
+<div class="row">
+	<div class="col-xs-12">
+		<h3><strong>ジャンル編集画面</strong></h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<%= form_with model: [:admins, @category] do |f| %>
+			<p>ジャンル　<%= f.text_field :name %></p>
+			<p><%= f.radio_button :status, :"有効" %> 有効</p>
+			<p><%= f.radio_button :status, :"無効" %> 無効</p>
+			<p><%= f.submit('変更を保存する',class: 'btn btn-info btn-outline-dark btn-sm active')%></p>
+		<% end %>
 	</div>
 </div>
