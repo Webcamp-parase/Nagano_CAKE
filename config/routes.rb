@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins
   devise_for :customers
    #   devise_scope :customers do
@@ -29,4 +30,14 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
   end
+
+  scope module: :customers do
+    resources :products, only: [:index, :show, :new, :create, :edit, :update]
+    resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
+  end
+    namespace :customers do
+    get 'products/index'
+    get 'products/show'
+  end
+  get 'products/:id' => 'products#show'
 end
