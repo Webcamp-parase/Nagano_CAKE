@@ -32,8 +32,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :customers do
-    resources :products, only: [:index, :show, :new, :create, :edit, :update]
-    resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
+    resources :products, only: [:index, :show, :new, :create, :edit, :update] do
+      resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
+    end
   end
     namespace :customers do
     get 'products/index'

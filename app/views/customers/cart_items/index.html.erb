@@ -1,0 +1,58 @@
+<div class='row', style="padding: 100px 15px;">
+  <div class='col'>
+    <h2>ショッピングカート</h2>
+      <p>
+        <%= link_to products_path, class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" do %>
+        カートを空にする
+        <% end %>
+      </p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+             <th>商品名</th>
+             <th>単価(税込)</th>
+             <th>数量</th>
+             <th>小計</th>
+             <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cart_items.each do |cart_item| %>
+             <tr>
+                <td><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
+                <%= cart_item.product.name %></td>
+                <td><%= addTax(cart_item.product.non_tax_price) %></td>
+                <td>
+                <%= form_with(model: cart_item, url:product_cart_item_path(cart_item.product, cart_item)) do |f| %>
+                <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+                <%= f.submit "変更" %>
+                <% end %>
+                </td>
+                <td><%= cart_item.quantity * cart_item.product.non_tax_price * 1.1 %></td>
+                <td>
+                <%= link_to product_cart_items_path(cart_item), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                    削除する
+                <% end %>
+                </td>
+             </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead class="thead-lignt">
+            <tr>
+             <th>合計金額</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            　<td><%= @total_price * 1.1%></td>
+            </tr>
+        </tbody>
+    </table>
+    <%= link_to products_path, class: "btn btn-primary" do %>
+    買い物を続ける<% end %>
+    <%= link_to products_path, class: "btn btn-success" do %>
+    情報入力に進む<% end %>
+  </div>
+</div>

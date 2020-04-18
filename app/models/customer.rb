@@ -11,5 +11,7 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 12}
+
+  has_many :cart_item
 end
 
