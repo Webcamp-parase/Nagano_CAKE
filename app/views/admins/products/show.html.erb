@@ -1,9 +1,29 @@
-<h2>商品 詳細画面</h2>
+<%= stylesheet_link_tag "admins/products", :media => "all" %>
 
-<%= attachment_image_tag @product, :image, :fill, 150, 150, fallback: 'no_image.jpg', size: '150x150' %></br>
-商品名　<%= @product.name %></br>
-商品説明 <%= @product.description %></br>
-ジャンル <%= @product.category.name %></br>
-税込価格(税抜価格)　<%= addTax(@product.non_tax_price) %>(<%= @product.non_tax_price.to_s(:delimited) %>) 円</br>
-販売ステータス　<%= @product.status %></br>
-<%= link_to "編集する", edit_admins_product_path(params[:id]) %>
+<div class="row">
+	<div class="col-xs-12">
+		<h3><strong>商品 詳細画面</strong></h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-4" style="text-align: center;">
+		<p><%= attachment_image_tag @product, :image, :fill, 250, 150, fallback: 'no_image.jpg', size: '250x150' %></p>
+	</div>
+
+	<div clall="col-xs-8">
+		<p>商品名　<%= @product.name %></p>
+		<p>商品説明 <%= @product.description %></p>
+		<p>ジャンル <%= @product.category.name %></p>
+		<p>税込価格(税抜価格)　<%= addTax(@product.non_tax_price) %>(<%= @product.non_tax_price.to_s(:delimited) %>) 円</p>
+		<p>販売ステータス　<%= @product.status %></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<p style="text-align: right; padding-right: 100px;">
+			<%= link_to "編集する", edit_admins_product_path(@product), class: 'btn btn-primary btn-md' %>
+		</p>
+	</div>
+</div>

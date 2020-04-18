@@ -11,39 +11,45 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <nav class="nav navbar-nav navbar-left">
-        <span>ながのCAKE</span>
-      </nav>
-      <nav>
-        <ul class="nav navbar-nav navbar-right" style="padding: 10px 15px;">
-          <% if customer_signed_in? %>
-            <li>ようこそ、xxxさん！</li>
-            <li><%= link_to 'マイページ',"customers_path(current_user)" %></li>
-            <li><%= link_to '商品一覧', products_path %></li>
-            <li><%= link_to 'カート',"cart_items_path" %></li>
-            <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
-          <% elsif admin_signed_in? %>
-            <div>
-              <li><%= link_to '商品一覧', admins_products_path %></li>
-              <li><%= link_to '会員一覧', "customers_path" %></li>
-              <li><%= link_to '注文履歴一覧', "orders_path" %></li>
-              <li><%= link_to 'ジャンル管理', admins_categories_path %></li>
-            </div>
-          <% else %>
-            <li><%= link_to '商品一覧', products_path %></li>
-            <li><%= link_to '新規登録', new_customer_registration_path %></li>
-            <li><%= link_to 'ログイン', new_customer_session_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </header>
-    <div class='body'>
-      <div class='container'>
+    <div class="container">
+      <div class="row">
+        <header class="navbar navbar-fixed-top navbar-inverse">
+          <nav class="nav navbar-nav navbar-left">
+            <span>ながのCAKE</span>
+          </nav>
+
+          <nav>
+            <ul class="nav navbar-nav navbar-right" style="padding: 10px 15px;">
+              <% if customer_signed_in? %>
+                <li>ようこそ、xxxさん！</li>
+                <li><%= link_to 'マイページ',"customers_path(current_user)" %></li>
+                <li><%= link_to '商品一覧', products_path %></li>
+                <li><%= link_to 'カート',"cart_items_path" %></li>
+                <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+
+              <% elsif admin_signed_in? %>
+                <div>
+                  <li><%= link_to '商品一覧', admins_products_path %></li>
+                  <li><%= link_to '会員一覧', "customers_path" %></li>
+                  <li><%= link_to '注文履歴一覧', "orders_path" %></li>
+                  <li><%= link_to 'ジャンル管理', admins_categories_path %></li>
+                </div>
+
+              <% else %>
+                <li><%= link_to '商品一覧', products_path %></li>
+                <li><%= link_to '新規登録', new_customer_registration_path %></li>
+                <li><%= link_to 'ログイン', new_customer_session_path %></li>
+              <% end %>
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+      <div class='body'>
         <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
-    </div>
 
+    </div>
   </body>
 </html>
