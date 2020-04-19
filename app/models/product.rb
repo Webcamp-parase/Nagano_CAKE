@@ -3,5 +3,6 @@ class Product < ApplicationRecord
 	enum status: { 販売中: true, 売切れ: false }
 
 	belongs_to :category
-	has_many :cart_items
+	has_many :cart_items, dependent: :destroy
+	has_many :order_products, dependent: :destroy
 end

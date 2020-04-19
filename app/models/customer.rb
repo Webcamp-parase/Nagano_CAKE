@@ -14,6 +14,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 12}
 
-  has_many :cart_item
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end
 
