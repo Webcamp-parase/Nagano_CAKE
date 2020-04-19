@@ -1,0 +1,31 @@
+<h1>配送先編集</h1>
+<table class="table">
+
+<% if @delivery.errors.any? %>
+	<% @delivery.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	<% end %>
+<% end %>
+
+<%= form_with model: @delivery, local: true do |f| %>
+
+	<tr>
+		<td>郵便番号(ハイフンなし)</td>
+		<td><%= f.text_field :postal_code, class: "form-control" %></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>住所</td>
+		<td colspan="2"><%= f.text_field :address, class: "form-control" %></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>宛名</td>
+		<td><%= f.text_field :name, class: "form-control" %></td>
+		<td class="text-right" colspan="2"><%= f.submit "編集する", class: "btn btn-success" %></td>
+	</tr>
+<% end %>
+</table>
