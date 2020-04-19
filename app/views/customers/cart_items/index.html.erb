@@ -28,9 +28,9 @@
                 <%= f.submit "変更" %>
                 <% end %>
                 </td>
-                <td><%= cart_item.quantity * cart_item.product.non_tax_price * 1.1 %></td>
+                <td><%= (cart_item.quantity * cart_item.product.non_tax_price * 1.1).floor.to_s(:delimited) %></td>
                 <td>
-                <%= link_to product_cart_items_path(cart_item), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                <%= link_to product_cart_item_path(cart_item.product, cart_item), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" do %>
                     削除する
                 <% end %>
                 </td>
@@ -46,7 +46,7 @@
         </thead>
         <tbody>
             <tr>
-            　<td><%= @total_price * 1.1%></td>
+            　<td><%= (@total_price * 1.1).floor.to_s(:delimited)%></td>
             </tr>
         </tbody>
     </table>
