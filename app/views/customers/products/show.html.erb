@@ -15,8 +15,9 @@
     <%= @product.name %></br>
     <%= @product.description %></br>
     <%= addTax(@product.non_tax_price) %>税込
-    <%= form_with model: @cart_item do |f| %>
-    個数選択<%= f.select :quantuty, [[1],[2],[3]] %>
+
+    <%= form_with model: [@product,@cart_item] do |f| %>
+    個数選択<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
     <%= f.submit "カートに入れる" %>
     <% end %>
   </div>
