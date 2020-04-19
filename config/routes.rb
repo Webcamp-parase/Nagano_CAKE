@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   	get "customers/retire"
   	patch "customers/retire" => "customers#retire_update"
   	resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
+<<<<<<< HEAD
+    resources :products, only: [:index, :show, :new, :create, :edit, :update]
+    delete "cart_items" => "cart_items#destroy_all"
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+=======
+>>>>>>> master
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -32,14 +38,4 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
   end
 
-  scope module: :customers do
-    resources :products, only: [:index, :show, :new, :create, :edit, :update] do
-      resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
-    end
-  end
-    namespace :customers do
-    get 'products/index'
-    get 'products/show'
-  end
-  get 'products/:id' => 'products#show'
 end
