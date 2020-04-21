@@ -1,5 +1,5 @@
-<h1>配送先編集</h1>
-<table class="table">
+<h3 class="text-center" style="width: 200px; margin: 30px 0 30px 100px; background-color: lightgray;">配送先編集</h3>
+<table class="table" style="max-width: 800px;">
 
 <% if @delivery.errors.any? %>
 	<% @delivery.errors.full_messages.each do |message| %>
@@ -10,22 +10,22 @@
 <%= form_with model: @delivery, local: true do |f| %>
 
 	<tr>
-		<td>郵便番号(ハイフンなし)</td>
-		<td><%= f.text_field :postal_code, class: "form-control" %></td>
-		<td></td>
-		<td></td>
+		<td style="width: 25%; border-style: none;">郵便番号(ハイフンなし)</td>
+		<td style="width: 25%; border-style: none;"><%= f.text_field :postal_code, class: "form-control" %></td>
+		<td style="width: 45%; border-style: none;"></td>
+		<td style="width: 15%; border-style: none;"></td>
 	</tr>
 
 	<tr>
-		<td>住所</td>
-		<td colspan="2"><%= f.text_field :address, class: "form-control" %></td>
-		<td></td>
+		<td style="border-style: none;">住所</td>
+		<td colspan="2" style="border-style: none;"><%= f.text_field :address, class: "form-control" %></td>
+		<td style="border-style: none;"></td>
 	</tr>
 
 	<tr>
-		<td>宛名</td>
-		<td><%= f.text_field :name, class: "form-control" %></td>
-		<td class="text-right" colspan="2"><%= f.submit "編集する", class: "btn btn-success" %></td>
+		<td style="border-style: none;">宛名</td>
+		<td style="border-style: none;"><%= f.text_field :name, class: "form-control" %></td>
+		<td class="text-right" colspan="2" style="border-style: none;"><%= f.submit "編集する", class: "btn btn-primary" %></td>
 	</tr>
 <% end %>
 </table>
