@@ -1,8 +1,8 @@
 <div class="row", style="padding: 100px 15px;">
  <div class="col-xs-12" style="text-align: left;">
   <h3><strong>会員編集画面</strong></h3>
+  <%= form_with model: [:admins, @customer] do |f| %>
    <table>
-    <%= form_with model: [:admins, @customer] do |f| %>
     <tr>
 	 <th>顧客ID</th>
 	 <td><%= @customer.id %></td>

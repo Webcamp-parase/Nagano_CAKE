@@ -13,7 +13,7 @@
   <body>
     <div class="container">
       <div class="row">
-        <header class="navbar navbar-fixed-top navbar-inverse">
+        <header>
           <nav>
             <a href="#" class="navbar-brand navbar-left">
               <span>ながのCAKE</span>
@@ -27,12 +27,10 @@
                 <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
 
               <% elsif admin_signed_in? %>
-                <div>
                   <li><%= link_to '商品一覧', admins_products_path %></li>
                   <li><%= link_to '会員一覧',  admins_customers_path %></li>
                   <li><%= link_to '注文履歴一覧', "orders_path" %></li>
                   <li><%= link_to 'ジャンル管理', admins_categories_path %></li>
-                </div>
 
               <% else %>
                 <li><%= link_to '商品一覧', products_path %></li>

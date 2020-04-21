@@ -1,26 +1,42 @@
 <div class='row', style="padding: 100px 15px;">
-	<div class='col-xs-3'>
-		<% @categories.each do |category| %>
-			<tr>
-				<td>
-				  <%= link_to products_path(category_id:category.id) do %>
-					<%= category.name %><br>
-				  <% end %>
-				</td>
-			</tr>
-		<% end %>
-	</div>
-	<div class='col-xs-9'>
-	  <h2>商品一覧</h2>
-		<% @products.each do |product| %>
-			<tr>
-			  <%= link_to product_path(product.id) do %>
-				<td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %><td>
-				<td><%= product.name %></td>
-				<td>¥<%= product.non_tax_price %></td>
+	<div class='col-sm-3'>
+	 <div class="table-responsive">
+	  <table class="table">
+		<thead>
+		 <tr>
+			<th><h3>ジャンル検索</h3></th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <% @categories.each do |category| %>
+		  <tr>
+			<td>
+		      <%= link_to products_path(category_id:category.id) do %>
+		      <%= category.name %><br>
 			  <% end %>
-			</tr>
-		<% end %>
-		<%= paginate @products, class: "paginate" %>
+			</td>
+		  </tr>
+		 <% end %>
+		</tbody>
+	  </table>
+	 </div>
+	</div>
+
+	<div class='col-sm-9'>
+	 <h2>商品一覧</h2><p>(全<%= @products.count %>件)</p>
+	 <div class='row'>
+	  <% @products.each do |product| %>
+	  <div class='col-sm-3'>
+		<tr>
+		  <%= link_to product_path(product.id) do %>
+			<td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %><td>
+			<td><p><%= product.name %></p></td>
+			<td><p>¥<%= product.non_tax_price %><p></td>
+		  <% end %>
+		</tr>
+	  </div>
+	  <% end %>
+	  <%= paginate @products, class: "paginate" %>
+	 </div>
 	</div>
 </div>

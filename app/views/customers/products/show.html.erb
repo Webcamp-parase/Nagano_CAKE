@@ -1,25 +1,41 @@
 <div class='row', style="padding: 100px 15px;">
-  <div class='col-xs-3'>
-    <% @categories.each do |category| %>
-    	<tr>
-    		<td>
-    		  <%= link_to products_path(category_id:category.id) do %>
-    			 <%= category.name %><br>
-    		  <% end %>
-        </td>
-    	</tr>
-    <% end %>
-  </div>
-  <div class='col-xs-9'>
-    <%= attachment_image_tag @product, :image, :fill, 80, 80, fallback: 'image.jpg', size: '250x150' %></br>
-    <%= @product.name %></br>
-    <%= @product.description %></br>
-    <%= addTax(@product.non_tax_price) %>税込
+  <div class='col-sm-3'>
+     <div class="table-responsive">
+      <table class="table">
+        <thead>
+         <tr>
+            <th><h3>ジャンル検索</h3></th>
+         </tr>
+        </thead>
+        <tbody>
+         <% @categories.each do |category| %>
+          <tr>
+            <td>
+              <%= link_to products_path(category_id:category.id) do %>
+              <%= category.name %><br>
+              <% end %>
+            </td>
+          </tr>
+         <% end %>
+        </tbody>
+      </table>
+     </div>
+    </div>
+
+  <div class='col-sm-9'>
+    <div class='col-sm-6'>
+    <%= attachment_image_tag @product, :image, :fill, 80, 80, fallback: 'image.jpg', size: '250x250' %>
+    </div>
+    <div class='col-sm-6'>
+    <h2><%= @product.name %></h2>
+    <p><%= @product.description %></p>
+    <p><%= addTax(@product.non_tax_price) %>(税込)</p>
 
     <%= form_with model: @cart_item do |f| %>
     個数選択<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
     <%= f.hidden_field :product_id, :value => @product.id %>
     <%= f.submit "カートに入れる" %>
     <% end %>
+    </div>
   </div>
 </div>
