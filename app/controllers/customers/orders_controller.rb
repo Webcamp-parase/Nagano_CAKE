@@ -7,8 +7,6 @@ class Customers::OrdersController < ApplicationController
     @items = CartItem.where(customer_id:current_customer.id)
     @payment_method = order_params[:payment_method]
     @order = Order.new
-    @postage = 800
-    @status = "入金待ち"
 
     if order_params[:delivery_select] == "1"
       @postal_code = current_customer.postal_code
@@ -43,6 +41,18 @@ class Customers::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save!
+
+    @items = CartItem.where(customer_id: current_customer.id)
+    @items.each do |item|
+      @order_product = OrderProduct.new
+      @order_product.product_id = item.product_id
+      @order_product.quantity = item.quantity
+      @order_product.price = item.product.non_tax_price
+      @order_product.order_id = @order.id
+      @order_product.save
+      item.destroy
+    end
+
     redirect_to order_complete_path
   end
 
