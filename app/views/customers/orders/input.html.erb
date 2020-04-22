@@ -1,24 +1,24 @@
 <p>注文情報入力</p>
 
-<%= form_with model: @order, url:order_confirm_path(@order), local: true do |f| %>
+<%= form_with model: @order, url:confirm_orders_path(@order), local: true do |f| %>
 
-<p>支払い方法</p>
-<p><%= f.radio_button :payment_method, :"クレジットカード" %> クレジットカード</p>
-<p><%= f.radio_button :payment_method, :"銀行振込" %> 銀行振込</p>
+	<p>支払い方法</p>
+	<p><%= f.radio_button :payment_method, :"クレジットカード", {:checked => true}%> クレジットカード</p>
+	<p><%= f.radio_button :payment_method, :"銀行振込", {} %> 銀行振込</p>
 
-<p>お届け先</p>
-
-
-<p><%= f.radio_button :delivery_select, :"1" %>ご自身の住所</p>
-<p><%= "#{current_customer.postal_code}#{current_customer.address}" %></p>
-<p><%= "#{current_customer.last_name}#{current_customer.first_name}" %></p>
+	<p>お届け先</p>
 
 
+	<p><%= f.radio_button :delivery_select, :"1", {:checked => true} %>ご自身の住所</p>
+	<p><%= "#{current_customer.postal_code} #{current_customer.address}" %></p>
+	<p><%= "#{current_customer.last_name}#{current_customer.first_name}" %></p>
 
-<p><%= f.radio_button :delivery_select, :"2" %>登録住所から選択</p>
-<p><%= f.collection_select :delivery_id, Delivery.where(customer_id: current_customer.id), :id, :address_add %></p>
-<p><%= f.radio_button :delivery_select, :"3" %>新しいお届け先</p>
-<table>
+	<p><%= f.radio_button :delivery_select, :"2", {} %>登録住所から選択</p>
+	<p><%= f.collection_select :delivery_id, Delivery.where(customer_id: current_customer.id), :id, :address_add %></p>
+
+	<p><%= f.radio_button :delivery_select, :"3", {} %>新しいお届け先</p>
+
+	<table>
 		<tr>
 			<th>郵便番号(ハイフンなし)</th>
 			<td><%= f.text_field :postal_code %></td>
@@ -30,8 +30,9 @@
 		<tr>
 			<th>宛名</th>
 			<td><%= f.text_field :name %></td>
-</table>
+		</tr>
+	</table>
 
-<p><%= f.submit 'aaa' %></p>
+	<p><%= f.submit '確認画面へ進む' %></p>
 
 <% end %>

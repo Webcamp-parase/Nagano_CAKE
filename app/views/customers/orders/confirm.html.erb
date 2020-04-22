@@ -1,5 +1,5 @@
 <p>注文情報確認</p>
-<table>
+<table class="table">
 	<thead>
 		<tr>
 			<th>商品名</th>
@@ -10,56 +10,54 @@
 	</thead>
 	<tbody>
 		<% @items.each do |item| %>
-		<tr>
-			<td><%= item.product.name %></td>
-			<td><%= addTax(item.product.non_tax_price) %></td>
-			<td><%= item.quantity %></td>
-			<td><%= (item.quantity * item.product.non_tax_price * 1.1).floor.to_s(:delimited) %></td>
-		</tr>
+			<tr>
+				<td><%= item.product.name %></td>
+				<td><%= addTax(item.product.non_tax_price) %></td>
+				<td><%= item.quantity %></td>
+				<td><%= (item.quantity * item.product.non_tax_price * 1.1).floor.to_s(:delimited) %></td>
+			</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<table>
-		<tr>
-			<th>送料</th>
-			<td>800</td>
-		</tr>
-		<tr>
-			<th>商品合計</th>
-			<td><%= @total_price.floor.to_s(:delimited) %>
-		</tr>
-		<tr>
-			<th>請求金額</th>
-			<td><%= @total_price + 800 %></td>
-		</tr>
+<table class="table">
+	<tr>
+		<th>送料</th>
+		<td>800</td>
+	</tr>
+	<tr>
+		<th>商品合計</th>
+		<td><%= @total_price.floor.to_s(:delimited) %>
+	</tr>
+	<tr>
+		<th>請求金額</th>
+		<td><%= (@total_price + 800).floor.to_s(:delimited) %></td>
+	</tr>
 </table>
 
 <table>
-		<tr>
-			<th>支払い方法</th>
-			<td><%= @payment_method %></td>
-		</tr>
-		<tr>
-			<th>お届け先</th>
-			<td><%= "#{@postal_code}#{@address}" %>
-			</td>
-		</tr>
-		<tr>
-			<th></th>
-			<td><%= @name %></td>
-		</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td><%= @payment_method %></td>
+	</tr>
+	<tr>
+		<th>お届け先</th>
+		<td><%= "#{@postal_code}#{@address}" %></td>
+	</tr>
+	<tr>
+		<th></th>
+		<td><%= @name %></td>
+	</tr>
 </table>
 
 <%= form_with model: @order, url:orders_path(@order), local:true do |f| %>
 
-<%= f.hidden_field :customer_id, :value => current_customer.id %>
-<%= f.hidden_field :total_fee, :value => @total_price %>
-<%= f.hidden_field :payment_method, :value => @payment_method %>
-<%= f.hidden_field :name, :value => @name %>
-<%= f.hidden_field :postal_code, :value => @postal_code %>
-<%= f.hidden_field :address, :value => @address %>
-
-<%= f.submit "sss" %>
+	<%= f.hidden_field :customer_id, :value => current_customer.id %>
+	<%= f.hidden_field :total_fee, :value => @total_price %>
+	<%= f.hidden_field :payment_method, :value => @payment_method %>
+	<%= f.hidden_field :name, :value => @name %>
+	<%= f.hidden_field :postal_code, :value => @postal_code %>
+	<%= f.hidden_field :address, :value => @address %>
+	<%= f.submit "購入を確定する" %>
 
 <% end %>
