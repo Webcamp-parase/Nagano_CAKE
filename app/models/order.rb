@@ -5,10 +5,16 @@ class Order < ApplicationRecord
 	belongs_to :customer
 	has_many :order_products
 
-	validates :payment_method, presence: true
-	validates :status, presence: true
 	validates :customer_id, presence: true
 	validates :postage, presence: true
 	validates :total_fee, presence: true
+	validates :payment_method, presence: true
+	validates :name, presence: true
+	validates :postal_code, presence: true
+	validates :address, presence: true
+	validates :status, presence: true
+
+
+
 
 end
