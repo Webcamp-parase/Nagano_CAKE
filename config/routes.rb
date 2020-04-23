@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'customers/home#top'
   devise_for :admins
   devise_for :customers
    #   devise_scope :customers do
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	  #    patch 'password' => 'devise/passwords#update'
 	  #    put 'password' => 'devise/passwords#update', as: :update_customer_password
  	 # end
+
 
   scope module: :customers do
   	resource :customers, only: [:show]
@@ -45,6 +46,8 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    get "home/top" => "home#top"
   end
+
 
 end
