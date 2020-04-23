@@ -26,7 +26,7 @@
 			</tbody>
 		</table>
 	</div>
-  
+
 	<div class="col-sm-3">
 		<table class="table table-bordered">
 			<tr>
@@ -74,6 +74,8 @@
 		<%= f.hidden_field :name, :value => @name %>
 		<%= f.hidden_field :postal_code, :value => @postal_code %>
 		<%= f.hidden_field :address, :value => @address %>
+		<%= f.hidden_field :delivery_select, :value => @delivery_select %>
+
 		<p style="text-align: center;"><%= f.submit('確認画面へ進む',class: 'btn btn-success btn-outline-dark btn-bg')%></p>
 
 		<% end %>
