@@ -11,44 +11,45 @@
   </head>
 
   <body>
+    <div class="container-fluid">
+     <div class="row">
+      <header>
+       <nav>
+        <% if admin_signed_in? %>
+         <a href="/admins/home/top" class="navbar-brand navbar-left">
+          <span>ながのCAKE</span>
+         </a>
+        <% else %>
+          <a href="/" class="navbar-brand navbar-left">
+          <span>ながのCAKE</span>
+         </a>
+        <% end %>
+        <ul class="nav navbar-nav navbar-right" style="padding: 10px 15px;">
+          <% if customer_signed_in? %>
+             <li>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</li>
+             <li><%= link_to 'マイページ',customers_path %></li>
+             <li><%= link_to '商品一覧', products_path %></li>
+             <li><%= link_to 'カート', cart_items_path %></li>
+             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+          <% elsif admin_signed_in? %>
+             <li><%= link_to '商品一覧', admins_products_path %></li>
+             <li><%= link_to '会員一覧',  admins_customers_path %></li>
+             <li><%= link_to '注文履歴一覧', admins_orders_path %></li>
+             <li><%= link_to 'ジャンル管理', admins_categories_path %></li>
+             <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          <% else %>
+             <li><%= link_to '商品一覧', products_path %></li>
+             <li><%= link_to '新規登録', new_customer_registration_path %></li>
+             <li><%= link_to 'ログイン', new_customer_session_path %></li>
+          <% end %>
+        </ul>
+       </nav>
+      </header>
+     </div>
+    </div>
     <div class="container">
-      <div class="row">
-
-          <nav>
-            <a href="/" class="navbar-brand navbar-left">
-              <span>ながのCAKE</span>
-            </a>
-            <ul class="nav navbar-nav navbar-right" style="padding: 10px 15px;">
-              <% if customer_signed_in? %>
-
-                <li>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</li>
-                <li><%= link_to 'マイページ',customers_path %></li>
-                <li><%= link_to '商品一覧', products_path %></li>
-                <li><%= link_to 'カート', cart_items_path %></li>
-                <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
-
-              <% elsif admin_signed_in? %>
-                  <li><%= link_to '商品一覧', admins_products_path %></li>
-                  <li><%= link_to '会員一覧',  admins_customers_path %></li>
-                  <li><%= link_to '注文履歴一覧', admins_orders_path %></li>
-                  <li><%= link_to 'ジャンル管理', admins_categories_path %></li>
-                  <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-
-              <% else %>
-                <li><%= link_to '商品一覧', products_path %></li>
-                <li><%= link_to '新規登録', new_customer_registration_path %></li>
-                <li><%= link_to 'ログイン', new_customer_session_path %></li>
-              <% end %>
-            </ul>
-          </nav>
-        </header>
-      </div>
-
-      <div class='body'>
-        <p id="notice"><%= notice %></p>
-        <%= yield %>
-      </div>
-
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
     </div>
   </body>
 </html>

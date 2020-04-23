@@ -32,13 +32,9 @@
     <p><%= addTax(@product.non_tax_price) %>(税込)</p>
 
     <%= form_with model: @cart_item do |f| %>
-    個数選択<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択" %>
     <%= f.hidden_field :product_id, :value => @product.id %>
-      <% if customer_signed_in? %>
-        <%= f.submit "カートに入れる" %>
-      <% else %>
-        <%= link_to "カートに入れる", new_customer_session_path %>
-      <% end %>
+    <%= f.submit "カートに入れる" %>
     <% end %>
     </div>
   </div>

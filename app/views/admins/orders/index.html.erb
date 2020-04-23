@@ -11,7 +11,7 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><%=link_to order.created_at, admins_order_path(order), data: {turbolinks: false} %></td>
+			<td><%=link_to "#{l order.created_at}", admins_order_path(order), data: {turbolinks: false} %></td>
 			<td><%= order.customer.last_name + order.customer.first_name %></td>
 			<td>
 				<% total_quantity = 0 %>
