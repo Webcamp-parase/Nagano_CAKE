@@ -23,7 +23,8 @@ class Customers::CustomersController < ApplicationController
 
   def retire_update
     customer = Customer.find(current_customer.id)
-    customer.update(status: false)
+    customer.update(status: "無効")
+    redirect_to root_path
   end
 
   private
