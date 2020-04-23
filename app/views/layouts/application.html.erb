@@ -22,9 +22,9 @@
             <ul class="nav navbar-nav navbar-right" style="padding: 10px 15px;">
               <% if customer_signed_in? %>
                 <li>ようこそ、xxxさん！</li>
-                <li><%= link_to 'マイページ',"customers_path(current_user)" %></li>
+                <li><%= link_to 'マイページ',customers_path %></li>
                 <li><%= link_to '商品一覧', products_path %></li>
-                <li><%= link_to 'カート', "product_cart_items_path(cart_item.product, cart_item.id)" %></li>
+                <li><%= link_to 'カート', cart_items_path %></li>
                 <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
 
               <% elsif admin_signed_in? %>
