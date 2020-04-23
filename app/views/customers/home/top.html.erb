@@ -1,0 +1,54 @@
+<div class='row', style="padding: 100px 15px;">
+  <div class='col-sm-3'>
+   <div class="table-responsive">
+    <table class="table">
+    <thead>
+     <tr>
+      <th><h3>ジャンル検索</h3></th>
+     </tr>
+    </thead>
+    <tbody>
+     <% @categories.each do |category| %>
+      <tr>
+      <td>
+          <%= link_to products_path(category_id:category.id) do %>
+          <%= category.name %><br>
+        <% end %>
+      </td>
+      </tr>
+     <% end %>
+    </tbody>
+    </table>
+   </div>
+  </div>
+
+  <div class='col-sm-9'>
+    <div class="row">
+      <div class="jumbotron"  style="background:url(assets/topimage.jpg);height: 40vh; background-size:cover;">
+        <p class="text-left">
+         ようこそ、NaganoCakeへ！<br>
+         このサイトは、ケーキ販売のECサイトになります。<br>
+         会員でない方も商品の閲覧はできますが、<br>
+         購入には会員登録が必要になります。
+        </p>
+      </div>
+    </div>
+   <h2>オススメ商品</h2>
+   <div class='row'>
+    <% @products.each do |product| %>
+    <div class='col-sm-3'>
+    <tr>
+      <%= link_to product_path(product.id) do %>
+      <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %><td>
+      <td><p><%= product.name %></p></td>
+      <td><p>¥<%= product.non_tax_price %><p></td>
+      <% end %>
+    </tr>
+    </div>
+    <% end %>
+    <p class="text-right">
+     <%= link_to 'もっと見る>', products_path%>
+    </p>
+   </div>
+  </div>
+</div>

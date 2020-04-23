@@ -1,2 +1,15 @@
-<h1>Admins::Home#top</h1>
-<p>Find me in app/views/admins/home/top.html.erb</p>
+<div class="row", style="padding: 100px 15px;">
+ <div class="col-xs-10">
+  <h3><strong>管理者画面</strong></h3>
+  <table>
+   <tr>
+   	 <th><h3>本日の注文件数</h3></th>
+   	 <td><h3><%= link_to "#" do %>
+   	 	<%= @orders.count %><% end %>件</h3>
+   	 </td>
+   </tr>
+   </tr>
+  </table>
+ </div>
+</div>
+
