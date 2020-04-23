@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'customers/home#top'
   devise_for :admins
   devise_for :customers
@@ -45,6 +46,8 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :categories, only: [:index, :create, :edit, :update]
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_products, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
     get "home/top" => "home#top"
   end

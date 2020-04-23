@@ -20,6 +20,7 @@
             </a>
             <ul class="nav navbar-nav navbar-right" style="padding: 10px 15px;">
               <% if customer_signed_in? %>
+
                 <li>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</li>
                 <li><%= link_to 'マイページ',customers_path %></li>
                 <li><%= link_to '商品一覧', products_path %></li>
