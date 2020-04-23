@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'customers/home#top'
   devise_for :admins
   devise_for :customers
    #   devise_scope :customers do
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
 	  #    put 'password' => 'devise/passwords#update', as: :update_customer_password
  	 # end
 
+
   scope module: :customers do
   	resource :customers, only: [:show]
   	get "customers/customers_edit" => "customers#edit", as: "edit_customers"
@@ -24,7 +27,6 @@ Rails.application.routes.draw do
   	patch "customers/retire" => "customers#retire_update"
 
   	resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
-
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
     delete "cart_items" => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :create, :update, :destroy]
@@ -36,8 +38,8 @@ Rails.application.routes.draw do
       end
     end
     get "order/complete" => "orders#complete"
-
     resource :order_products, only: [:create]
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -46,6 +48,9 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     resources :order_products, only: [:update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    get "home/top" => "home#top"
   end
+
 
 end

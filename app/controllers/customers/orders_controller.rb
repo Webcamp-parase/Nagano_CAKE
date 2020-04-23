@@ -1,4 +1,5 @@
 class Customers::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def input
     @order = Order.new
   end
@@ -13,9 +14,10 @@ class Customers::OrdersController < ApplicationController
       @address = current_customer.address
       @name = "#{current_customer.last_name}#{current_customer.first_name}"
     elsif order_params[:delivery_select] == "2"
-      @postal_code = current_customer.delivery.postal_code(order_params[:delivery_id])
-      @address = delivery.address(order_params[:delivery_id])
-      @name = delivery.name(order_params[:delivery_id])
+      @delivery = Delivery.find_by(customer_id: current_customer.id, id: order_params[:delivery_id])
+      @postal_code = @delivery.postal_code
+      @address = @delivery.address
+      @name = @delivery.name
     else
       @postal_code = order_params[:postal_code]
       @address = order_params[:address]
@@ -27,20 +29,24 @@ class Customers::OrdersController < ApplicationController
      #@total_price = @total_price + cart_item.quantity * cart_item.product.non_tax_price
       @total_price += (item.quantity * item.product.non_tax_price * 1.1)
     end
+
   end
 
   def complete
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_products = OrderProduct.where(order_id: @order.id)
   end
 
   def create
     @order = Order.new(order_params)
-    @order.save!
+    @order.save
 
     @items = CartItem.where(customer_id: current_customer.id)
     @items.each do |item|

@@ -1,2 +1,78 @@
-<h1>Customers::Orders#show</h1>
-<p>Find me in app/views/customers/orders/show.html.erb</p>
+<div class="row">
+	<div class="col-sm-12">
+		<h3 class="text-center" style="width: 170px; margin: 30px 0 30px 100px; background-color: lightgray;">注文履歴詳細</h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<p><strong>注文情報</strong></p>
+		<table class="table table-bordered">
+			<tr>
+				<th class="active">注文日</th>
+				<td><%= l @order.created_at, format: :short %></td>
+			</tr>
+			<tr>
+				<th class="active">配送先</th>
+				<td><%= @order.postal_code %></br>
+					<%= @order.address %></br>
+					<%= @order.name %></br>
+				</td>
+			</tr>
+			<tr>
+				<th class="active">支払い方法</th>
+				<td><%= @order.payment_method %></td>
+			</tr>
+			<tr>
+				<th class="active">ステータス</th>
+				<td><%= @order.status %></td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="col-sm-3">
+		<p><strong>請求情報</strong></p>
+		<table class="table table-bordered">
+			<tr>
+				<th class="active">商品合計</th>
+				<td><%= (@order.total_fee).floor.to_s(:delimited) %></td>
+			</tr>
+			<tr>
+				<th class="active">配送料</th>
+				<td><%= @order.postage %></td>
+			</tr>
+			<tr>
+				<th class="active"><strong>ご請求額</strong></th>
+				<td><%= (@order.total_fee + @order.postage).floor.to_s(:delimited) %></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-8">
+		<p><strong>注文内容</strong></p>
+
+		<table class="table table-bordered">
+			<thead>
+				<tr class="active">
+					<th>商品</th>
+					<th>単価(税込)</th>
+					<th>個数</th>
+					<th>小計</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @order_products.each do |order_product| %>
+					<tr>
+						<td><%= order_product.product.name %></td>
+						<td><%= addTax(order_product.price) %></td>
+						<td><%= order_product.quantity %></td>
+						<td><%= (order_product.quantity * order_product.price * 1.1).floor.to_s(:delimited) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
