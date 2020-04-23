@@ -23,7 +23,7 @@
 	</div>
 
 	<div class='col-sm-9'>
-	 <p><h2>商品一覧</h2>(全<%= @products.total_count %>件)</p>
+	 <p><h2><%= @name %>一覧</h2>(全<%= @products.total_count %>件)</p>
 	 <div class='row'>
 	  <% @products.each do |product| %>
 	  <div class='col-sm-3'>

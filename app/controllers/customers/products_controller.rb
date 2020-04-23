@@ -5,8 +5,10 @@ class Customers::ProductsController < ApplicationController
   	if params[:category_id]
   		@category = Category.find(params[:category_id])
   		@products = @category.products.order(created_at: :desc).page(params[:page]).per(8)
+      @name = @category.name
   	else
   		@products = Product.order(created_at: :desc).page(params[:page]).per(8)
+      @name = "商品"
   	end
   end
 
