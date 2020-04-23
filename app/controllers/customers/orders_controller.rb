@@ -1,4 +1,5 @@
 class Customers::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def input
     @order = Order.new
   end
