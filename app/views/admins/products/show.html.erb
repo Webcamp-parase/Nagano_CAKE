@@ -1,29 +1,45 @@
-<%= stylesheet_link_tag "admins/products", :media => "all" %>
-
 <div class="row">
 	<div class="col-xs-12">
 		<h3><strong>商品 詳細画面</strong></h3>
 	</div>
 </div>
 
-<div class="row">
+<div class="row" style="margin-top: 70px;">
 	<div class="col-xs-4" style="text-align: center;">
 		<p><%= attachment_image_tag @product, :image, :fill, 250, 150, fallback: 'no_image.jpg', size: '250x150' %></p>
 	</div>
 
 	<div clall="col-xs-8">
-		<p>商品名　<%= @product.name %></p>
-		<p>商品説明 <%= @product.description %></p>
-		<p>ジャンル <%= @product.category.name %></p>
-		<p>税込価格(税抜価格)　<%= addTax(@product.non_tax_price) %>(<%= @product.non_tax_price.to_s(:delimited) %>) 円</p>
-		<p>販売ステータス　<%= @product.status %></p>
+		<table class="table" style="width: 40%">
+			<tr>
+				<th style="border: none;">商品名</th>
+				<td style="border: none;"><%= @product.name %></td>
+			</tr>
+			<tr>
+				<th style="border: none;">商品説明</th>
+				<td style="border: none; height: auto; width: 65%"><%= @product.description %></td>
+			</tr>
+			<tr>
+				<th style="border: none;">ジャンル</th>
+				<td style="border: none;"><%= @product.category.name %></td>
+			</tr>
+			<tr>
+				<th style="border: none;">税込価格（税抜価格）</th>
+				<td style="border: none;"><%= addTax(@product.non_tax_price) %>(<%= @product.non_tax_price.to_s(:delimited) %>) 円</td>
+			</tr>
+			<tr>
+				<th style="border: none;">販売ステータス</th>
+				<td style="border: none;"><%= @product.status %></td>
+			</tr>
+		</table>
+
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-xs-12">
 		<p style="text-align: right; padding-right: 100px;">
-			<%= link_to "編集する", edit_admins_product_path(@product), data: {turbolinks: false}, class: 'btn btn-primary btn-md' %>
+			<%= link_to "編集する", edit_admins_product_path(@product), data: {turbolinks: false}, class: 'btn btn-info btn-md', style:  'width: 150px; height: 50px; padding-top: 15px;' %>
 		</p>
 	</div>
 </div>

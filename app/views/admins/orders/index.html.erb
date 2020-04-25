@@ -1,29 +1,33 @@
-<h3>注文一覧画面</h3>
-<table class="table" style="max-width: 800px;">
-	<thead>
-		<tr style="background-color: lightgray;">
-			<th>購入日時</th>
-			<th>購入者</th>
-			<th>注文個数</th>
-			<th>注文ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @orders.each do |order| %>
-		<tr>
-			<td><%=link_to "#{l order.created_at}", admins_order_path(order), data: {turbolinks: false} %></td>
-			<td><%= order.customer.last_name + order.customer.first_name %></td>
-			<td>
-				<% total_quantity = 0 %>
+<div class="row">
+	<div class="col-xs-12">
+		<h3><strong>注文一覧画面</strong></h3>
 
-				<% order.order_products.each do |order_product| %>
-				<% total_quantity += order_product.quantity %>
+		<table class="table" style="max-width: 800px; margin: 20px 0 0 80px; width: 70%">
+			<thead>
+				<tr class="active">
+					<th>購入日時</th>
+					<th>購入者</th>
+					<th>注文個数</th>
+					<th>注文ステータス</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @orders.each do |order| %>
+					<tr>
+						<td><%=link_to "#{l order.created_at}", admins_order_path(order), data: {turbolinks: false} %></td>
+						<td><%= order.customer.last_name + order.customer.first_name %></td>
+						<td><% total_quantity = 0 %>
+							<% order.order_products.each do |order_product| %>
+							<% total_quantity += order_product.quantity %>
+							<% end %>
+							<%= total_quantity %>
+						</td>
+						<td><%= order.status %></td>
+					</tr>
 				<% end %>
+			</tbody>
+		</table>
 
-				<%= total_quantity %>
-			</td>
-			<td><%= order.status %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+		<div class="page" style="text-align: center;"><%= paginate @orders %></div>
+	</div>
+</div>

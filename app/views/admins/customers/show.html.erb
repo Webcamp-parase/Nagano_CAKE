@@ -1,38 +1,38 @@
-<div class="row", style="padding: 100px 15px;">
+<div class="row">
  <div class="col-xs-10">
   <h3><strong>会員詳細画面</strong></h3>
-  <table class="table">
+  <table class="table" style="width: auto;">
    <tr>
-   	 <th>顧客ID</th>
-	 <td><%= @customer.id %>　　<a href="#" class="label label-info" disabled="disabled"><%= @customer.status %>会員</a></td>
+   	 <th style="border: none;">顧客ID</th>
+	   <td style="border: none;"><%= @customer.id %>　　<a href="#" class="label label-info" disabled="disabled"><%= @customer.status %>会員</a></td>
    </tr>
    <tr>
-   	 <th>氏名</th>
-   	 <td><%= @customer.last_name + "　" + @customer.first_name %></p></td>
+   	 <th style="border: none;">氏名</th>
+   	 <td style="border: none;"><%= @customer.last_name + "　" + @customer.first_name %></p></td>
    </tr>
    <tr>
-   	 <th>フリガナ</th>
-   	 <td><%= @customer.read_last_name + "　" + @customer.read_first_name %></td>
+   	 <th style="border: none;">フリガナ</th>
+   	 <td style="border: none;"><%= @customer.read_last_name + "　" + @customer.read_first_name %></td>
    </tr>
    <tr>
-   	 <th>郵便番号</th>
-   	 <td><%= @customer.postal_code %></td>
+   	 <th style="border: none;">郵便番号</th>
+   	 <td style="border: none;"><%= @customer.postal_code %></td>
    </tr>
    <tr>
-   	 <th>住所</th>
-   	 <td><%= @customer.address %></td>
+   	 <th style="border: none;">住所</th>
+   	 <td style="border: none;"><%= @customer.address %></td>
    </tr>
    <tr>
-     <th>電話番号</th>
-   	 <td><%= @customer.phone_number %></td>
+     <th style="border: none;">電話番号</th>
+   	 <td style="border: none;"><%= @customer.phone_number %></td>
    </tr>
    <tr>
-     <th>メールアドレス</th>
-   	 <td><%= @customer.email %></td>
+     <th style="border: none;">メールアドレス</th>
+   	 <td style="border: none;"><%= @customer.email %></td>
    </tr>
    <tr>
-   	 <th><%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md' %></th>
-   	 <th><%= link_to "注文履歴一覧を見る", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md' %></th>
+   	 <th style="border: none;"><%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md' %></th>
+   	 <th style="border: none;"><%= link_to "注文履歴一覧を見る", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md' %></th>
    </tr>
   </table>
  </div>
