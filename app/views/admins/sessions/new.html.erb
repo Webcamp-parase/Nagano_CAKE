@@ -1,6 +1,6 @@
-<h4 class="text-center" style="width: 280px; margin: 30px 0 30px 100px; background-color: lightgray;">会員の方はこちらからログイン</h4>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= render "devise/shared/error_messages", resource: resource %>
 
 <table class= "table" style="max-width: 600px; margin: 100px auto;">
   <tr>

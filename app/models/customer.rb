@@ -21,6 +21,9 @@ class Customer < ApplicationRecord
     super && (self.status == "有効")
   end
 
+  def self.search(keyword)
+    where(["last_name like? OR first_name like? OR read_last_name like? OR read_first_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
 
 end
 
