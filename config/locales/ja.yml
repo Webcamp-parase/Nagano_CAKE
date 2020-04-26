@@ -15,6 +15,10 @@ ja:
   activerecord:
     models:
       customer: "お客様"
+      delivery: "配送先"
+      category: "ジャンル"
+      product: "商品"
+      cart_item: "カートアイテム"
     attributes:
       customer:
         email: "メールアドレス"
@@ -26,3 +30,19 @@ ja:
         postal_code: "郵便番号"
         address: "住所"
         phone_number: "電話番号"
+      delivery:
+        postal_code: "郵便番号"
+        address: "住所"
+        name: "宛名"
+      category:
+        name: "ジャンル名"
+      product:
+        name: "商品名"
+        description: "商品説明"
+        non_tax_price: "税抜価格"
+        status: "販売ステータス"
+        image: "商品画像"
+        category_id: "ジャンル"
+        category: "ジャンル"
+      cart_item:
+        quantity: "個数"

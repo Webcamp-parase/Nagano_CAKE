@@ -2,6 +2,9 @@ class Customers::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def input
     @order = Order.new
+    @postal_code_error = ""
+    @address_error = ""
+    @name_error = ""
   end
 
   def confirm
@@ -21,9 +24,22 @@ class Customers::OrdersController < ApplicationController
       @address = @delivery.address
       @name = @delivery.name
     else
-      @postal_code = select_params[:postal_code]
-      @address = select_params[:address]
-      @name = select_params[:name]
+      if select_params[:postal_code] == "" || select_params[:address] == "" || select_params[:name] == ""
+        if select_params[:postal_code] == ""
+          @postal_code_error = "郵便番号を入力してください"
+        end
+        if select_params[:address] == ""
+          @address_error = "住所を入力してください"
+        end
+        if select_params[:name] == ""
+          @name_error = "宛名を入力してください"
+        end
+        render "input"
+      else
+        @postal_code = select_params[:postal_code]
+       @address = select_params[:address]
+        @name = select_params[:name]
+      end
     end
 
     @total_price = 0
