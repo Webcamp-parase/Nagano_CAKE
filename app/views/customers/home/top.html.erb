@@ -1,25 +1,6 @@
-<div class='row', style="padding: 100px 15px;">
+<div class='row' style="padding: 50px 15px;">
   <div class='col-sm-3'>
-   <div class="table-responsive">
-    <table class="table">
-    <thead>
-     <tr>
-      <th><h3>ジャンル検索</h3></th>
-     </tr>
-    </thead>
-    <tbody>
-     <% @categories.each do |category| %>
-      <tr>
-      <td>
-          <%= link_to products_path(category_id:category.id) do %>
-          <%= category.name %><br>
-        <% end %>
-      </td>
-      </tr>
-     <% end %>
-    </tbody>
-    </table>
-   </div>
+   <%= render 'customers/products/category', categories: @categories %>
   </div>
 
   <div class='col-sm-9'>
@@ -33,22 +14,24 @@
         </p>
       </div>
     </div>
-   <h2>オススメ商品</h2>
+   <h2>オススメ人気商品</h2>
    <div class='row'>
     <% @products.each do |product| %>
     <div class='col-sm-3'>
-    <tr>
+     <tr>
       <%= link_to product_path(product.id) do %>
       <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %><td>
-      <td><p><%= product.name %></p></td>
-      <td><p>¥<%= product.non_tax_price %><p></td>
+      <td><p style="color: black;"><%= product.name %></p></td>
+      <td><p style="color: #eb2142;">¥<%= product.non_tax_price.to_s(:delimited) %><p></td>
       <% end %>
-    </tr>
+     </tr>
     </div>
     <% end %>
-    <p class="text-right">
-     <%= link_to 'もっと見る>', products_path%>
-    </p>
    </div>
+    <div class='row text-right'>
+     <%= link_to products_path do %>
+      <strong style="color: black;">もっと見る▶︎</strong>
+     <% end %>
+    </div>
   </div>
 </div>

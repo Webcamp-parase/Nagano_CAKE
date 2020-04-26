@@ -1,4 +1,4 @@
-<div class="row">
+<div class='row' style="padding: 50px 15px;">
 	<div class="col-sm-12">
 
 		<h3 class="text-center" style="width: 170px; margin: 30px 0 30px 100px; background-color: lightgray;">注文情報確認</h3>
@@ -17,7 +17,8 @@
 			<tbody>
 				<% @items.each do |item| %>
 					<tr>
-						<td><%= item.product.name %></td>
+						<td><%= attachment_image_tag item.product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
+							<%= item.product.name %></td>
 						<td><%= addTax(item.product.non_tax_price) %></td>
 						<td><%= item.quantity %></td>
 						<td><%= (item.quantity * item.product.non_tax_price * 1.1).floor.to_s(:delimited) %></td>
@@ -47,18 +48,18 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<table>
+		<table class="table" style="width:500px;">
 			<tr>
-				<th><strong>支払い方法</strong></th>
-				<td><%= @payment_method %></td>
+				<th style="border:none;"><strong>支払い方法</strong></th>
+				<td style="border:none;"><%= @payment_method %></td>
 			</tr>
 			<tr>
-				<th><strong>お届け先</strong></th>
-				<td><%= "#{@postal_code}#{@address}" %></td>
+				<th style="border:none;"><strong>お届け先</strong></th>
+				<td style="border:none;"><%= "#{@postal_code}#{@address}" %></td>
 			</tr>
 			<tr>
-				<th></th>
-			<td><%= @name %></td>
+				<th style="border:none;"></th>
+			<td style="border:none;"><%= @name %></td>
 			</tr>
 		</table>
 	</div>

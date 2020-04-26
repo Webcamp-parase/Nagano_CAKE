@@ -1,0 +1,27 @@
+<div class="panel panel-default" style="border-color: #FFC0CB;">
+    <table class="table table-hover table-bordered">
+    <thead>
+     <tr>
+      <th style="background-color: #FFC0CB;">
+       <h3 style="margin-top: 10px;">
+        <span class="glyphicon glyphicon-search" aria-hidden="true" style="padding: 0 10px;"></span>ジャンル検索
+       </h3>
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <% categories.each do |category| %>
+     <tr>
+      <td style="padding: 0px; height: 40px; border-color: #FFC0CB;">
+        <%= link_to products_path(category_id:category.id) do %>
+         <button type="button" class="btn-default" style="padding: 0px; height: 40px; width: 100%; text-align: left; border: none;">
+          <span class="glyphicon glyphicon-chevron-right" style="padding: 0 10px;" aria-hidden="true"></span>
+          <%= category.name %>
+         </button>
+        <% end %>
+      </td>
+     </tr>
+     <% end %>
+    </tbody>
+    </table>
+   </div>
