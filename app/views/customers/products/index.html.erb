@@ -1,44 +1,27 @@
-<div class='row'>
-	<div class='col-sm-3'>
-	 <div class="table-responsive">
-	  <table class="table">
-		<thead>
-		 <tr>
-			<th><h3>ジャンル検索</h3></th>
-		 </tr>
-		</thead>
-		<tbody>
-		 <% @categories.each do |category| %>
-		  <tr>
-			<td>
-		      <%= link_to products_path(category_id:category.id) do %>
-		      <%= category.name %><br>
-			  <% end %>
-			</td>
-		  </tr>
-		 <% end %>
-		</tbody>
-	  </table>
-	 </div>
-	</div>
+<div class='row' style="padding: 50px 15px;">
+  <div class='col-sm-3'>
+   <%= render 'category', categories: @categories %>
+</div>
 
 	<div class='col-sm-9'>
-	 <p><h2><%= @name %>一覧</h2>(全<%= @products.total_count %>件)</p>
+	 <h2 style="margin: 0px 0px 30px 0px;"><%= @name %>一覧<small> (全<%= @products.total_count %>件)</small></h2>
 	 <div class='row'>
 	  <% @products.each do |product| %>
 	  <div class='col-sm-3'>
 		<tr>
 		  <%= link_to product_path(product.id) do %>
 			<td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %></td>
-			<td><p><%= product.name %></p></td>
-			<td><p>¥<%= product.non_tax_price %></p></td>
+			<td><p style="color: black;"><%= product.name %></p></td>
+			<td><p style="color: #eb2142;">¥<%= product.non_tax_price.to_s(:delimited) %><p></td>
 		  <% end %>
 		</tr>
 	  </div>
 	  <% end %>
 	 </div>
 	 <div class='row'>
-	  <%= paginate @products, class: "paginate" %>
+	  <div class="text-center">
+	   <%= paginate @products, class: "paginate" %>
+	  </div>
 	 </div>
 	</div>
 </div>

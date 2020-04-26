@@ -10,10 +10,11 @@
   </head>
 
   <body>
+
     <% if current_page?(new_admin_session_path) %>
 
       <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #ffb6c1; border-style: none;">
-        <div class="container-fluid">
+        <div class="container-fluid" style="box-shadow: 0px 10px 15px -15px gray">
           <div class="navbar-header">
             <%= link_to "ながのCAKE", new_admin_session_path, class: "navbar-brand navbar-left" %>
           </div>
@@ -23,7 +24,7 @@
     <% else %>
 
       <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #ffb6c1; border-style: none;">
-        <div class="container-fluid">
+        <div class="container-fluid" style="box-shadow: 0px 10px 15px -15px gray">
           <div class="navbar-header">
             <% if admin_signed_in? %>
               <%= link_to "ながのCAKE", admins_home_top_path, class: "navbar-brand navbar-left" %>

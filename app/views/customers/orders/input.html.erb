@@ -17,22 +17,22 @@
 		<p>　　　　<%= "#{current_customer.last_name}#{current_customer.first_name}" %></p>
 
 		<p>　　<%= f.radio_button :delivery_select, :"2", {} %>登録済住所から選択</p>
-		<p>　　　　<%= f.collection_select :delivery_id, Delivery.where(customer_id: current_customer.id), :id, :address_add %></p>
+		<p><%= f.collection_select :delivery_id, Delivery.where(customer_id: current_customer.id), :id, :address_add, {}, {class: 'form-control',style: "width:390px; margin-left: 55px;"}%></p>
 
 		<p>　　<%= f.radio_button :delivery_select, :"3", {} %>新しいお届け先</p>
 
-		<table>
+		<table class="table" style="width:450px;">
 			<tr>
-				<th>　　　　郵便番号(ハイフンなし)</th>
-				<td><%= f.text_field :postal_code, class:"form-control" %></td>
+				<th style="border:none;">　　　　郵便番号(ハイフンなし)</th>
+				<td style="border:none;"><%= f.text_field :postal_code, class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>　　　　住所</th>
-				<td><%= f.text_field :address, class:"form-control" %></td>
+				<th style="border:none;">　　　　住所</th>
+				<td style="border:none;"><%= f.text_field :address, class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>　　　　宛名</th>
-				<td><%= f.text_field :name, class:"form-control" %></td>
+				<th style="border:none;">　　　　宛名</th>
+				<td style="border:none;"><%= f.text_field :name, class:"form-control" %></td>
 			</tr>
 		</table>
 
