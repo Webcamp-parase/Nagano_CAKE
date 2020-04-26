@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get "order/complete" => "orders#complete"
     resource :order_products, only: [:create]
 
+    get "search" => "search#search"
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -35,6 +37,8 @@ Rails.application.routes.draw do
     resources :order_products, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
     get "home/top" => "home#top"
+
+    get "search" => "search#search"
   end
 
 
