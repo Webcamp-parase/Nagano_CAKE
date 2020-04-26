@@ -11,3 +11,18 @@ ja:
       previous: "‹"
       next: "›"
       truncate: "..."
+
+  activerecord:
+    models:
+      customer: "お客様"
+    attributes:
+      customer:
+        email: "メールアドレス"
+        password: "パスワード"
+        last_name: "姓"
+        first_name: "名"
+        read_last_name: "セイ"
+        read_first_name: "メイ"
+        postal_code: "郵便番号"
+        address: "住所"
+        phone_number: "電話番号"

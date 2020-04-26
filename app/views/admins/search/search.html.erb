@@ -1,0 +1,62 @@
+<% if @products == nil %>
+	<h3><strong>検索結果(全<%= @customers.count %>件)</p></strong></h3>
+
+	<table class="table">
+		<thead>
+			<tr class="active">
+				<th>会員ID</th>
+				<th>氏名</th>
+				<th>メールアドレス</th>
+				<th>ステータス</th>
+			</tr>
+		</thead>
+	<tbody>
+		<% @customers.each do |customer| %>
+			<tr>
+				<td><%= customer.id %></td>
+				<td><%= link_to admins_customer_path(customer.id) do %>
+						<%= customer.last_name + customer.first_name %>
+					<% end %>
+				</td>
+				<td><%= customer.email %></td>
+				<td><%= customer.status %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div class="page"><%= paginate @customers %></div>
+
+<% else %>
+
+<h3><strong>検索結果(全<%= @products.count %>件)</p></strong></h3>
+
+<table class="table">
+	<thead>
+		<tr class="active">
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+<tbody>
+	<% @products.each do |product| %>
+		<tr>
+			<td><%= product.id %></td>
+			<td><%= link_to admins_product_path(product.id) do %>
+					<%= product.name %>
+				<% end %>
+			</td>
+			<td><%= product.non_tax_price.to_s(:delimited) %></td>
+			<td><%= product.category.name %></td>
+			<td><%= product.status %></td>
+		</tr>
+	<% end %>
+</tbody>
+</table>
+
+<div class="page"><%= paginate @products %></div>
+
+<% end %>
