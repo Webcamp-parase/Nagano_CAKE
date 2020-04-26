@@ -22,7 +22,7 @@
     <tbody>
      <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
+        <td><%= attachment_image_tag cart_item.product, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
         <%= cart_item.product.name %></td>
         <td><%= addTax(cart_item.product.non_tax_price) %></td>
         <td>
@@ -60,7 +60,7 @@
   </div>
   <div class='row' style="padding: 0px 15px;">
    <div class="text-center">
-    <%= link_to order_input_path, class: "btn btn-success btn-lg" do %>情報入力に進む<% end %>
+    <%= link_to order_input_path, class: "btn btn-success btn-lg", data: { turbolinks: false } do %>情報入力に進む<% end %>
    </div>
   </div>
 </div>

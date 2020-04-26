@@ -14,20 +14,22 @@
         </p>
       </div>
     </div>
-   <h2>オススメ人気商品</h2>
-   <div class='row'>
-    <% @products.each do |product| %>
-    <div class='col-sm-3'>
-     <tr>
-      <%= link_to product_path(product.id) do %>
-      <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %><td>
-      <td><p style="color: black;"><%= product.name %></p></td>
-      <td><p style="color: #eb2142;">¥<%= product.non_tax_price.to_s(:delimited) %><p></td>
+    <h2>オススメ人気商品</h2>
+    <div class='row'>
+      <% @products.first(4).each do |product| %>
+        <% if product.category.status == "有効" %>
+          <div class='col-sm-3'>
+            <tr>
+              <%= link_to product_path(product.id) do %>
+              <td><%= attachment_image_tag product, :image, :fill, 180, 180, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %><td>
+              <td><p style="color: black;"><%= product.name %></p></td>
+              <td><p style="color: #eb2142;">¥<%= product.non_tax_price.to_s(:delimited) %><p></td>
+              <% end %>
+            </tr>
+          </div>
+        <% end %>
       <% end %>
-     </tr>
     </div>
-    <% end %>
-   </div>
     <div class='row text-right'>
      <%= link_to products_path do %>
       <strong style="color: black;">もっと見る▶︎</strong>

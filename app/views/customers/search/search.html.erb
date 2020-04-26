@@ -1,26 +1,7 @@
-<div class='row', style="padding: 100px 15px;">
-	<div class='col-sm-3'>
-	 <div class="table-responsive">
-	  <table class="table">
-		<thead>
-		 <tr>
-			<th><h3>ジャンル検索</h3></th>
-		 </tr>
-		</thead>
-		<tbody>
-		 <% @categories.each do |category| %>
-		  <tr>
-			<td>
-		      <%= link_to products_path(category_id:category.id) do %>
-		      <%= category.name %><br>
-			  <% end %>
-			</td>
-		  </tr>
-		 <% end %>
-		</tbody>
-	  </table>
-	 </div>
-	</div>
+<div class='row' style="padding: 50px 15px;">
+  <div class='col-sm-3'>
+   <%= render 'customers/products/category', categories: @categories %>
+  </div>
 
 	<div class='col-sm-9'>
 	 <p><h2>検索結果</h2>(全<%= @products.total_count %>件)</p>
@@ -29,7 +10,7 @@
 	  <div class='col-sm-3'>
 		<tr>
 		  <%= link_to product_path(product.id) do %>
-			<td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %></td>
+			<td><%= attachment_image_tag product, :image, :fill, 180, 180, format: 'jpeg', fallback: "no_image.jpg", size: '180x180' %></td>
 			<td><p><%= product.name %></p></td>
 			<td><p>¥<%= product.non_tax_price %></p></td>
 		  <% end %>

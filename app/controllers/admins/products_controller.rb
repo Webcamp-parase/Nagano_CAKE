@@ -18,14 +18,20 @@ class Admins::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to admins_product_path(@product.id)
+    if @product.save
+      redirect_to admins_product_path(@product.id)
+    else
+      render "new"
+    end
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to admins_product_path(params[:id])
+    if @product.update(product_params)
+      redirect_to admins_product_path(params[:id])
+    else
+      render "edit"
+    end
   end
 
   def product_params
