@@ -22,7 +22,7 @@
     <tbody>
      <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= attachment_image_tag cart_item.product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
+        <td><%= attachment_image_tag cart_item.product, :image, :fill, 360, 360, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
         <%= cart_item.product.name %></td>
         <td><%= addTax(cart_item.product.non_tax_price) %></td>
         <td>
