@@ -17,7 +17,7 @@
 			<tbody>
 				<% @items.each do |item| %>
 					<tr>
-						<td><%= attachment_image_tag item.product, :image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
+						<td><%= attachment_image_tag item.product, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", size: '80x80' %>
 							<%= item.product.name %></td>
 						<td><%= addTax(item.product.non_tax_price) %></td>
 						<td><%= item.quantity %></td>
@@ -77,7 +77,7 @@
 		<%= f.hidden_field :address, :value => @address %>
 		<%= f.hidden_field :delivery_select, :value => @delivery_select %>
 
-		<p style="text-align: center;"><%= f.submit('確認画面へ進む',class: 'btn btn-success btn-outline-dark btn-bg')%></p>
+		<p style="text-align: center;"><%= f.submit('購入を確定する',class: 'btn btn-success btn-outline-dark btn-bg')%></p>
 
 		<% end %>
 	</div>

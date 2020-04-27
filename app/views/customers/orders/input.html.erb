@@ -31,15 +31,15 @@
 		<table class="table" style="width:450px;">
 			<tr>
 				<th style="border:none;">　　　　郵便番号(ハイフンなし)</th>
-				<td style="border:none;"><%= f.text_field :postal_code, class:"form-control" %></td>
+				<td style="border:none;"><%= f.text_field :postal_code, class: "form-control", id: "address_zipcode" %></td>
 			</tr>
 			<tr>
 				<th style="border:none;">　　　　住所</th>
-				<td style="border:none;"><%= f.text_field :address, class:"form-control" %></td>
+				<td style="border:none;"><%= f.text_field :address, class: "form-control", id: "address" %></td>
 			</tr>
 			<tr>
 				<th style="border:none;">　　　　宛名</th>
-				<td style="border:none;"><%= f.text_field :name, class:"form-control" %></td>
+				<td style="border:none;"><%= f.text_field :name, class: "form-control" %></td>
 			</tr>
 		</table>
 

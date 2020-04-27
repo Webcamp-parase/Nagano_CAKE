@@ -13,7 +13,8 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def index
-    @cart_items = CartItem.where(customer_id:current_customer.id)
+    products = Product.where(category_id: Category.where(status: "有効"))
+    @cart_items = CartItem.where(customer_id:current_customer.id, product_id: products)
     @total_price = 0
     @cart_items.each do |cart_item|
      #@total_price = @total_price + cart_item.quantity * cart_item.product.non_tax_price

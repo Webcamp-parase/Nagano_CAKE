@@ -7,14 +7,14 @@
 
 	<tr>
 		<td style="width: 25%; border-style: none;">郵便番号(ハイフンなし)</td>
-		<td style="width: 25%; border-style: none;"><%= f.text_field :postal_code, class: "form-control" %></td>
+		<td style="width: 25%; border-style: none;"><%= f.text_field :postal_code, class: "form-control", id: "address_zipcode" %></td>
 		<td style="width: 45%; border-style: none;"></td>
 		<td style="width: 15%; border-style: none;"></td>
 	</tr>
 
 	<tr>
 		<td style="border-style: none;">住所</td>
-		<td colspan="2" style="border-style: none;"><%= f.text_field :address, class: "form-control" %></td>
+		<td colspan="2" style="border-style: none;"><%= f.text_field :address, class: "form-control", id: "address" %></td>
 		<td style="border-style: none;"></td>
 	</tr>
 
