@@ -7,9 +7,11 @@
 	</div>
 </div>
 
+<%= render "admins/error/error_messages", resource: @category %>
+
 <div class="row">
 	<div class="col-xs-12">
-		<%= form_with model: [:admins, @category] do |f| %>
+		<%= form_with model: [:admins, @category], local: true do |f| %>
 			<p>ジャンル　<%= f.text_field :name %></p>
 			<p><%= f.radio_button :status, :"有効" %> 有効</p>
 			<p><%= f.radio_button :status, :"無効" %> 無効</p>

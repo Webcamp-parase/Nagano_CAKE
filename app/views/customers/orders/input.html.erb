@@ -4,6 +4,13 @@
 
 		<h3 class="text-center" style="width: 170px; margin: 30px 0 30px 100px; background-color: lightgray;">注文情報入力</h3>
 
+		<ul style="list-style: none;">
+			<li style="color: red;"><%= @postal_code_error %></li>
+			<li style="color: red;"><%= @address_error %></li>
+			<li style="color: red;"><%= @name_error %></li>
+		</ul>
+
+
 		<%= form_with model: @order, url:confirm_orders_path(@order), local: true do |f| %>
 
 		<p><strong>支払方法</strong></p>
