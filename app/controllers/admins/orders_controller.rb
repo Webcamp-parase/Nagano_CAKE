@@ -1,6 +1,13 @@
 class Admins::OrdersController < ApplicationController
   def index
-  	@orders = Order.order(created_at: "DESC").page(params[:page]).per(10)
+    if params[:created_at]
+      @name = "本日の"
+      @orders = Order.where(created_at: Time.zone.now.all_day).order(created_at: "DESC").page(params[:page]).per(10)
+      render "index"
+    else
+      @name = ""
+      @orders = Order.order(created_at: "DESC").page(params[:page]).per(10)
+    end
   end
 
   def show
@@ -23,6 +30,6 @@ class Admins::OrdersController < ApplicationController
   private
 
   def order_params
-  	params.require(:order).permit(:status)
+  	params.require(:order).permit(:status, :created_at)
   end
 end

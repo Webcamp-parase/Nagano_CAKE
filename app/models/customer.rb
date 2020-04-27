@@ -1,8 +1,7 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+
   enum status: { 有効: true, 退会済: false }
 
   has_many :deliveries, dependent: :destroy
@@ -14,11 +13,17 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 12}
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   def active_for_authentication?
     super && (self.status == "有効")
+  end
+
+  def full_name
+    self.last_name + self.first_name
   end
 
   def self.search(keyword)

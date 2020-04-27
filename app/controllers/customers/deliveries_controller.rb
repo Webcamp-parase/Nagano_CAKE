@@ -2,7 +2,7 @@ class Customers::DeliveriesController < ApplicationController
   before_action :authenticate_customer!
   def index
   	@delivery = Delivery.new
-  	@deliveries = Delivery.all
+  	@deliveries = Delivery.where(customer_id: current_customer.id)
   end
 
   def create
@@ -11,7 +11,7 @@ class Customers::DeliveriesController < ApplicationController
   	if @delivery.save
   		redirect_to deliveries_path
   	else
-  		@deliveries = Delivery.all
+  		@deliveries = Delivery.where(customer_id: current_customer.id)
   		render "index"
   	end
   end

@@ -31,8 +31,8 @@
    	 <td style="border: none;"><%= @customer.email %></td>
    </tr>
    <tr>
-   	 <th style="border: none;"><%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md' %></th>
-   	 <th style="border: none;"><%= link_to "注文履歴一覧を見る", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md' %></th>
+   	 <th style="border: none;"><%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-md', data: { turbolinks: false}%></th>
+   	 <th style="border: none;"><%= link_to "注文履歴一覧を見る", admins_orders_path, class: 'btn btn-primary btn-md' %></th>
    </tr>
   </table>
  </div>
