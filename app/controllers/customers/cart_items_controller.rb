@@ -6,7 +6,7 @@ class Customers::CartItemsController < ApplicationController
     if @cart_item.save
      redirect_to cart_items_path
     else
-     @categories = Category.all
+     @categories = Category.where(status: "有効")
      @product = Product.find(cart_item_params[:product_id])
      render 'customers/products/show'
     end
