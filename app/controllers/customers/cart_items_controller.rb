@@ -1,12 +1,14 @@
 class Customers::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   def create
-    cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer.id
-    if cart_item.save
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    if @cart_item.save
      redirect_to cart_items_path
     else
-     redirect_back
+     @categories = Category.all
+     @product = Product.find(cart_item_params[:product_id])
+     render 'customers/products/show'
     end
   end
 

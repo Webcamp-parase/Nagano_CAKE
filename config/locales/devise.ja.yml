@@ -34,15 +34,15 @@ ja:
       updated_not_active: 'パスワードが正しく変更されました。'
     registrations:
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
-      signed_up: 'アカウント登録が完了しました。'
+      signed_up: 'アカウント登録が完了しました'
       signed_up_but_inactive: 'ログインするためには、アカウントを有効化してください。'
       signed_up_but_locked: 'アカウントが凍結されているためログインできません。'
       signed_up_but_unconfirmed: '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
       update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
       updated: 'アカウント情報を変更しました。'
     sessions:
-      signed_in: 'ログインしました。'
-      signed_out: 'ログアウトしました。'
+      signed_in: 'ログインしました'
+      signed_out: 'ログアウトしました'
       already_signed_out: '既にログアウト済みです。'
     unlocks:
       send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'
@@ -59,7 +59,7 @@ ja:
         one: "エラーが発生したため %{resource} は保存されませんでした:"
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
       taken: "は既に使用されています。"
-      blank: "が入力されていません。"
+      blank: "が入力されていません"
       too_short: "は%{count}文字以上に設定して下さい。"
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"

@@ -4,6 +4,8 @@
 	</div>
 </div>
 
+<%= render "admins/error/error_messages", resource: @product %>
+
 <div class="row" style="margin-top: 70px;">
 	<div class="col-xs-4" style="text-align: center;">
 		<%= form_with model: [:admins, @product], local: true do |f| %>

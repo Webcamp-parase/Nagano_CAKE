@@ -1,7 +1,10 @@
 <div class="row">
  <div class="col-xs-12" style="text-align: left;">
   <h3><strong>会員編集画面</strong></h3>
-  <%= form_with model: [:admins, @customer] do |f| %>
+
+  <%= render "admins/error/error_messages", resource: @customer %>
+
+  <%= form_with model: [:admins, @customer], local: true do |f| %>
    <table class="table" style="width: 50%; margin: 20px 0 0 20px;">
     <tr>
 	 <th style="border: none; width: 5%">会員ID</th>
