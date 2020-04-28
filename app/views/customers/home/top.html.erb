@@ -21,8 +21,9 @@
     <h2>オススメ人気商品</h2>
 
     <div class='row'>
-      <% @products.first(4).each do |product| %>
-        <% if product.category.status == "有効" %>
+      <% i = 0 %>
+      <% @products.each do |product| %>
+        <% if product.category.status == "有効" && product.status == "販売中" %>
           <div class='col-sm-3'>
             <tr>
               <%= link_to product_path(product.id) do %>
@@ -32,6 +33,10 @@
               <% end %>
             </tr>
           </div>
+          <% i += 1 %>
+          <% if i > 3 %>
+          <% break %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
